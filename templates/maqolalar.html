@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>maqolalar</title>
+</head>
+<body>
+<h1>Hamma maqolalar</h1>
+{%for m in maqolalar%}
+<ul>
+    <li>
+        <a href="/maqola/{{m.id}}/">{{m.sarlavha}}</a>
+    </li>
+</ul>
+{%endfor%}
+<h5>Yangi maqola q'shish</h5>
+<form method="post">
+    {%csrf_token%}
+    <label>Sarlavha:</label>
+    <input type="text" name="sarlavha">
+    <label>Sana:</label>
+    <input type="date" name="sana">
+    <label>Mavzu:</label>
+    <input type="text" name="mavzu">
+    <label>Matn:</label>
+    <input type="text" name="matn">
+    <label>Muallif:</label>
+    <select name="muallif">
+        {%for m in muallif%}
+        <option value="{{m.id}}">{{m.ism}}</option>
+        {%endfor%}
+    </select>
+</form>
+</body>
+</html>
